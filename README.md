@@ -13,7 +13,7 @@ By squaring the signal and computing the FFT, we get a peak at the centre of the
 to obtain the frequency offset. This frequency offset is then fed into a NCO which is mixed with the original signal to correct for the doppler shift
 
 ## How was it implemented?
-This design was implemented on Xilinx's Ultrascale+ RFSoC platform using Xilinx Vivado 2020.2 and Vitis 2020.2. The design utilises Xilinx IP Cores to for FFT computation and generation
+This design was implemented on Xilinx's Ultrascale+ RFSoC platform using Xilinx Vivado 2020.2 and Vitis 2020.2. The design utilises Xilinx's IP Coresfor FFT computation and generation
 of a sinusoidal wave using the DDS compiler. The design also uses custom RTL codes to generate AXI4-Stream interface signals (TLAST) for the FFT IP Core and a running max finder to find
 the peak and convert it into a Phase Increment Word (PIW) for the NCO.
 
