@@ -1,4 +1,4 @@
-## Carrier Acquistion
+# Carrier Acquistion
 FPGA based doppler shift corrector block for a satellite telemetry receiver chain.
 
 ## Why is it needed?
@@ -11,6 +11,11 @@ the receiver chain before the matched filter and demodulator.
 ## How does it work?
 By squaring the signal and computing the FFT, we get a peak at the centre of the signal spectrum. By finding the index of the peak, it is then multiplied with the frequency resolution
 to obtain the frequency offset. This frequency offset is then fed into a NCO which is mixed with the original signal to correct for the doppler shift
+
+## How was it implemented?
+This design was implemented on Xilinx's Ultrascale+ RFSoC platform using Xilinx Vivado 2020.2 and Vitis 2020.2. The design utilises Xilinx IP Cores to for FFT computation and generation
+of a sinusoidal wave using the DDS compiler. The design also uses custom RTL codes to generate AXI4-Stream interface signals (TLAST) for the FFT IP Core and a running max finder to find
+the peak and convert it into a Phase Increment Word (PIW) for the NCO.
 
 ## Block Diagram
 <img width="908" height="232" alt="image" src="https://github.com/user-attachments/assets/a0603f23-aa73-45d6-bf51-e87a187c2df8" />
